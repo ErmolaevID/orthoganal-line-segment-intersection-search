@@ -1,9 +1,9 @@
 namespace orthoganal_line_segment_intersection_search
 {
-    public class Node
+    public class Node : IBinarySearchTreeNode<int>
     {
-        public Node LeftNode { get; set; }
-        public Node RightNode { get; set; }
+        public IBinarySearchTreeNode<int> LeftNode { get; set; }
+        public IBinarySearchTreeNode<int> RightNode { get; set; }
         public int Data { get; set; }
     }
 }

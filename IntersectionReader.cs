@@ -4,8 +4,17 @@ namespace orthoganal_line_segment_intersection_search
 {
     public class IntersectionReader
     {
-        private readonly Queue<IEvent> eventsQueue = new Queue<IEvent>();
+        private readonly Queue<IEvent<int>> eventsQueue;
+        private readonly IBinarySearchTree<int> binarySearchTree;
         
+        public IntersectionReader(): this(new BinaryTree()) { }
+
+        public IntersectionReader(IBinarySearchTree<int> binarySearchTree)
+        {
+            this.binarySearchTree = binarySearchTree;
+            eventsQueue = new Queue<IEvent<int>>();
+        }
+
         public bool IsIntersection(IEnumerable<ISegment> segments)
         {
             foreach (var segment in segments)
@@ -20,11 +29,10 @@ namespace orthoganal_line_segment_intersection_search
                     eventsQueue.Enqueue(new VerticalInputEvent(segment.StartPointY, segment.EndPointY));
                 }
             }
-
-            var bst = new BinaryTree();
+            
             while (eventsQueue.Count != 0)
             {
-                if (eventsQueue.Dequeue().IsIntersection(bst))
+                if (eventsQueue.Dequeue().IsIntersection(binarySearchTree))
                     return true;
             }
 

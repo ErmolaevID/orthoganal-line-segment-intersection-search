@@ -1,6 +1,6 @@
 namespace orthoganal_line_segment_intersection_search
 {
-    public class VerticalInputEvent : IEvent
+    public class VerticalInputEvent : IEvent<int>
     {
         private readonly int startPointY;
         private readonly int endPointY;
@@ -9,7 +9,7 @@ namespace orthoganal_line_segment_intersection_search
             (this.startPointY, this.endPointY) = (
                 startPointY, endPointY);
 
-        public bool IsIntersection(BinaryTree binaryTree)
+        public bool IsIntersection(IBinarySearchTree<int> binaryTree)
         {
             for (var i = endPointY; i < startPointY; i++)
             {

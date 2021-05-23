@@ -1,7 +1,7 @@
 namespace orthoganal_line_segment_intersection_search
 {
-    public interface IEvent
+    public interface IEvent<T>
     {
-        bool IsIntersection(BinaryTree binaryTree);
+        bool IsIntersection(IBinarySearchTree<T> binaryTree);
     }
 }
