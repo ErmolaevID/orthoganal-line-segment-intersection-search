@@ -18,7 +18,6 @@ namespace orthoganal_line_segment_intersection_search
         public bool IsIntersection(IEnumerable<ISegment> segments)
         {
             foreach (var segment in segments)
-            {
                 if (segment.IsHorizontal)
                 {
                     eventsQueue.Enqueue(new HorizontalInputEvent(segment.StartPointY));
@@ -28,13 +27,10 @@ namespace orthoganal_line_segment_intersection_search
                 {
                     eventsQueue.Enqueue(new VerticalInputEvent(segment.StartPointY, segment.EndPointY));
                 }
-            }
-            
+
             while (eventsQueue.Count != 0)
-            {
                 if (eventsQueue.Dequeue().IsIntersection(binarySearchTree))
                     return true;
-            }
 
             return false;
         }
